@@ -1,0 +1,41 @@
+<apex:page StandardController="Case" extensions="caseContactPSController" TAbStyle="Case">
+    <apex:form >
+    <apex:panelGrid columns="2" >
+        <apex:outputText styleClass="labelCol" style="font-weight:bold; white-space:pre;" value="Profile:"/>
+        <apex:outputText value="{!contactProfile}"/>
+    </apex:panelGrid>
+    <hr/>
+    <apex:outputText styleClass="labelCol" style="font-weight:bold; white-space:pre;text-decoration:underline;" value="Assigned Permission Set(s)"/>
+    
+    <apex:dataTable columns="2" value="{!posPSA}" var="c" styleClass="tableClass" rowClasses="odd,even" >   
+        <apex:column > 
+            <apex:outputText style="white-space:pre;" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText>        
+        </apex:column>
+        <apex:column >
+            <apex:outputText value="{!lstPSA[c]}"/>
+        </apex:column>
+    </apex:dataTable>
+    <hr/>
+    <apex:outputText styleClass="labelCol" style="font-weight:bold; white-space:pre;text-decoration:underline;" value="Assigned Queue(s)"/>
+    
+    <apex:dataTable columns="2" value="{!posQueue}" var="q" styleClass="tableClass" rowClasses="odd,even" >   
+        <apex:column > 
+            <apex:outputText style="white-space:pre;" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText>        
+        </apex:column>
+        <apex:column >
+            <apex:outputText value="{!lstQueue[q]}"/>
+        </apex:column>
+    </apex:dataTable>
+    <hr/>
+    <apex:outputText styleClass="labelCol" style="font-weight:bold; white-space:pre;text-decoration:underline;" value="Assigned Public Group(s)"/>
+    
+    <apex:dataTable columns="2" value="{!posPublicGroup}" var="p" styleClass="tableClass" rowClasses="odd,even" >   
+        <apex:column > 
+            <apex:outputText style="white-space:pre;" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputText>        
+        </apex:column>
+        <apex:column >
+            <apex:outputText value="{!lstPublicGroup[p]}"/>
+        </apex:column>
+    </apex:dataTable>
+    </apex:form>
+</apex:page>

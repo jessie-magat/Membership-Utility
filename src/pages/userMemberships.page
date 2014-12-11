@@ -1,0 +1,40 @@
+<apex:page StandardController="User" extensions="userMembershipsController" showHeader="true" sidebar="false">
+    <apex:form >
+          <apex:actionFunction name="change" action="{!change}"/>
+          <apex:panelGrid >
+
+              <apex:outputLabel style="font-size:12px; font-weight:bold;" for="UserSelect">User</apex:outputLabel>
+              <apex:inputField id="UserSelect" label="User" value="{!userPSA.assigneeid}" onchange="change()"/> 
+      
+          </apex:panelGrid>
+        <apex:pageBlock id="pb" rendered="{!psassignee}"><apex:outputLabel style="font-size:15px; font-weight:bold;">{!usr.name} has {!count} permission set(s) assigned </apex:outputLabel>
+            <apex:pageBlockTable title="Assigned PermissionSets" value="{!lstpsa}" var="u">
+                <apex:column headerValue="PermissionSet" value="{!u.permissionset.label}"/>
+            </apex:pageBlockTable>
+            
+            <apex:panelGrid columns="6">
+                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!First}" disabled="{!!hasPrevious}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!Previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!Next}" disabled="{!!hasNext}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!Last}" disabled="{!!hasNext}" title="Last Page"/>
+                <apex:outputText >Page&nbsp;{!pageno}&nbsp;of&nbsp;{!pageTotal}</apex:outputText>
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText=" Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+
+        </apex:pageBlock>
+        <apex:pageBlock id="pb2" rendered="{!gassignee}"><apex:outputLabel style="font-size:15px; font-weight:bold;">{!usr.name} associated with {!gcount} group(s)  </apex:outputLabel>
+            <apex:pageBlockTable title="Related Groups" value="{!grp}" var="g">
+                <apex:column headerValue="Group" value="{!g.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>  
+        
+        <apex:pageBlock id="pb3" rendered="{!qassignee}"><apex:outputLabel style="font-size:15px; font-weight:bold;">{!usr.name} associated with {!qcount} queue(s)  </apex:outputLabel>
+            <apex:pageBlockTable title="Related Queue" value="{!que}" var="q">
+                <apex:column headerValue="Queue" value="{!q.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>  
+          
+    </apex:form>
+</apex:page>
